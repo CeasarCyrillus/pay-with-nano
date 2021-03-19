@@ -14,11 +14,9 @@ export class NanoNode {
 
 	public connect = (websocket: EventEmitter) => {
 		this.ws = websocket as WebSocket;
-		console.log(this.ws.readyState)
 		return new Promise<void>((resolve, reject) => {
 			this.ws.addListener("open", () => {
 				this.isConnected = true;
-				console.log(this.ws.readyState)
 				resolve();
 			})
 		});
