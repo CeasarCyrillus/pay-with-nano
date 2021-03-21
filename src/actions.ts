@@ -27,3 +27,17 @@ export interface Pong extends BaseMessage{
 	time: number,
 	id: number
 }
+
+export class AccountBalance extends Action {
+	action = "account_balance";
+	account: string;
+	constructor(address: string) {
+		super();
+		this.account = address;
+	}
+}
+
+export interface AccountBalanceResponse extends BaseMessage {
+	balance: string;
+	pending: string;
+}

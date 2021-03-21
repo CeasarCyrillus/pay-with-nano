@@ -3,13 +3,15 @@ import { EventEmitter } from "isomorphic-ws";
 import {waitFor} from "./utils";
 import {NanoNode} from "../src/NanoNode";
 import {Ping, Pong} from "../src/actions";
+import WebSocket from "isomorphic-ws";
+
 describe("NanoNode", () => {
 	test("connect", async () => {
 		const websocket = new EventEmitter();
-		const nanoNode = new NanoNode();
-
-		nanoNode.connect(websocket);
+		const nanoNode = new NanoNode(websocket as unknown as WebSocket, "test");
 		websocket.emit("open");
+
+		await nanoNode.connected();
 
 		await waitFor(() => {
 			expect(nanoNode.isConnected).toBe(true);
@@ -22,13 +24,9 @@ describe("NanoNode", () => {
 
 	test("ping", async () => {
 		const websocket = new FakeWebSocket();
-		const nanoNode = new NanoNode();
-
-		nanoNode.connect(websocket);
+		const nanoNode = new NanoNode(websocket as unknown as WebSocket, "test");
 		websocket.emit("open");
-		await waitFor(() => {
-			expect(nanoNode.isConnected).toBeTruthy()
-		});
+		await nanoNode.connected();
 
 		websocket.send = jest.fn((dater) => {
 			const pong: Pong = {ack: "pong", id: 88, time: 171283912312}
