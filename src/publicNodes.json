@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://nault.nanos.cc/proxy",
+    "name": "Nanos.cc"
+  },
+  {
+    "url": "https://node.somenano.com/proxy",
+    "name": "SomeNano"
+  },
+  {
+    "url": "https://proxy.powernode.cc/proxy",
+    "name": "PowerNode"
+  },
+  {
+    "url": "https://mynano.ninja/api/node",
+    "name": "My Nano Ninja"
+  }
+]
