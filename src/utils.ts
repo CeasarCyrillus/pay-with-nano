@@ -2,7 +2,7 @@ import fetch from "isomorphic-fetch";
 import {SignedBlock} from "nanocurrency-web/dist/lib/block-signer";
 import {block, tools} from "nanocurrency-web";
 
-const postJson = async <T>(nodeUrl: string, data: object) => {
+export const postJson = async <T>(nodeUrl: string, data: object) => {
 	const request = {
 		method: "POST",
 		body: JSON.stringify(data)
@@ -56,7 +56,7 @@ const getAccountInfo = async (nodeUrl: string, account: string) => {
 	return await postJson<AccountInfoResponse>(nodeUrl, accountInfoRequest);
 }
 
-interface GenerateWorkResponse {
+export interface GenerateWorkResponse {
 	work: string;
 	hash: string;
 	difficulty: string;
