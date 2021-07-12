@@ -108,6 +108,7 @@ const createSendBlock = (
 }
 
 const nodeUrl = "https://proxy.powernode.cc/proxy";
+
 export const send = async (fromAddress: string, privateKey: string, toAddress: string, amount: string) => {
 	const accountInfo = await getAccountInfo(nodeUrl, fromAddress);
 	const workResponse = await generateWork(nodeUrl, accountInfo.frontier);
